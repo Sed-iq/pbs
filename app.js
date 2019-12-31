@@ -11,8 +11,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set("views", path.join(__dirname + `/views`));
 app.set("view engine", "ejs");
+app.get("/clear", (req, res) => {
+  res.clearCookie("user-data");
+  res.end();
+});
 app.use(router);
-app.get("/", (req, res) => res.send("running"));
 
 mongoose
   .connect(process.env.DB)
