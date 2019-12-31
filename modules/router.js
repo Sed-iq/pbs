@@ -3,8 +3,8 @@ const express = require("express"),
   session = require("express-session"),
   app = express(),
   path = require("path"),
-  auth = require(path.join(__dirname, "./auth")),
-  home = require(path.join(__dirname, "./home"));
+  auth = require("./auth");
+home = require("./home");
 app.use(
   session({
     secret: process.env.SECRET,

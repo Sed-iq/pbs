@@ -1,5 +1,5 @@
 const path = require("path");
-const schema = require(path.join(__dirname, "./schema"));
+const schema = require("./schema");
 module.exports = (req, res) => {
   const userId = req.headers["x-user-id"];
   const flash = req.flash("message");
