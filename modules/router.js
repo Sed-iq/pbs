@@ -2,7 +2,7 @@ const express = require("express"),
   flash = require("express-flash"),
   session = require("express-session"),
   app = express();
-// auth = require("./auth"),
+auth = require("./auth");
 // home = require("./home");
 app.use(
   session({
