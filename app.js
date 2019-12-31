@@ -10,7 +10,7 @@ app.use(cookie(process.env.SECRET));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
-// app.use(router);
+app.use(router);
 app.get("/", (req, res) => res.send("running"));
 
 mongoose
