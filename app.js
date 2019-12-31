@@ -4,7 +4,7 @@ const express = require("express"),
   path = require("path"),
   cookie = require("cookie-parser"),
   mongoose = require("mongoose"),
-  router = require("./modules/router");
+  router = require(path.join(__dirname, "./modules/router"));
 app.use("/assets", express.static(path.join(__dirname, "assets")));
 app.use(cookie(process.env.SECRET));
 app.use(express.json());
