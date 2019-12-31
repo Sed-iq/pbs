@@ -42,6 +42,7 @@ module.exports.register = (req, res) => {
     console.log(req.body);
     res.status(400).redirect("/login");
   } else {
+    console.log(password)
     schema.user
       .findOne({ email: email })
       .then(async (data) => {
@@ -65,6 +66,7 @@ module.exports.register = (req, res) => {
             res.send(
               "An email has been sent to you, click the link to join us"
             );
+          
             transporter
               .verify(email, token)
               .then((data) => {
