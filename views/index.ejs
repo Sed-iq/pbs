@@ -61,13 +61,16 @@ https://templatemo.com/tm-535-softy-pinko
                             <li><a href="#contact-us">Contact Us</a></li>
 
                             <!-- BANKS START THE REG/LOGIN BACKEND CODE FROM HERE-->
-                            <%=name %> hey
                             <% if(name){ %>
                                     <li class="">
                                         <p style="padding-top:.5em"><%= name%></p>
                                     </li>
                                 <% } %>
-                                
+                                <% if(!name){ %>
+                                    <li class="reg">
+                                       <a href="/login"><i id="reg01" class="fa-solid fa-user fa-xl"></i></a>
+                                    </li>
+                                    <% } %>
                                 
                             <!--******END*****-->
                         </ul>
