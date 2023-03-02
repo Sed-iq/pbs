@@ -9,8 +9,8 @@ module.exports = (req, res) => {
         if (data)
           res.render("index.ejs", { name: data.fullname, message: flash });
       })
-      .catch((err) => res.render("index.ejs"));
+      .catch((err) => res.render("index.ejs",{name:null, message: flash }));
   } else {
-    res.render("index.ejs");
+    res.render("index.ejs",{name:null, message: flash });
   }
 };
