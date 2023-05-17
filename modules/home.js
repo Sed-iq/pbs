@@ -1,4 +1,5 @@
-const schema = require("./schema");
+const path = require("path");
+const schema = require(path.join(__dirname, "./schema"));
 module.exports = (req, res) => {
   const userId = req.headers["x-user-id"];
   const flash = req.flash("message");
@@ -9,8 +10,8 @@ module.exports = (req, res) => {
         if (data)
           res.render("index.ejs", { name: data.fullname, message: flash });
       })
-      .catch((err) => res.render("index.ejs",{name:null, message: flash }));
+      .catch((err) => res.render("index.ejs", { name: null, message: flash }));
   } else {
-    res.render("index.ejs",{name:null, message: flash });
+    res.render("index.ejs", { name: null, message: flash });
   }
 };
