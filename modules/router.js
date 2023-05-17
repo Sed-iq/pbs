@@ -2,8 +2,9 @@ const express = require("express"),
   flash = require("express-flash"),
   session = require("express-session"),
   app = express(),
-  auth = require("./auth"),
-  home = require("./home");
+  path = require("path"),
+  auth = require(path.join(__dirname, "./auth")),
+  home = require(path.join(__dirname, "./home"));
 app.use(
   session({
     secret: process.env.SECRET,
@@ -12,7 +13,7 @@ app.use(
   })
 );
 app.use(flash());
-app.get("/", auth.isLogin, home);
+app.get("/", home);
 app.get("/login", auth.isLogin, (req, res) => {
   const error = req.flash("message");
   res.render("accounts", { error });
