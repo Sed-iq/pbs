@@ -11,7 +11,6 @@ app.use(
     saveUninitialized: true,
   })
 );
-app.get("/", (req, res) => res.send("running"));
 app.use(flash());
 app.get("/", auth.isLogin, home);
 app.get("/login", auth.isLogin, (req, res) => {
