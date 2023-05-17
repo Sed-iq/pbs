@@ -13,7 +13,7 @@ app.use(
   })
 );
 app.use(flash());
-app.get("/", home);
+app.get("/", auth.isLogin, home);
 app.get("/login", auth.isLogin, (req, res) => {
   const error = req.flash("message");
   res.render("accounts", { error });

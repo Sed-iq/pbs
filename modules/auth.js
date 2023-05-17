@@ -11,8 +11,9 @@ const cookieOpt = {
 };
 module.exports.login = (req, res) => {
   const { email, password } = req.body;
-  if (!email || !password) res.redirect("/login");
-  else {
+  if (!email || !password) {
+    res.redirect("/login");
+  } else {
     schema.user
       .findOne({ email: email })
       .then((data) => {
@@ -42,11 +43,11 @@ module.exports.register = (req, res) => {
     console.log(req.body);
     res.status(400).redirect("/login");
   } else {
-    console.log(password)
+    console.log(password);
     schema.user
       .findOne({ email: email })
       .then(async (data) => {
-        if (data) res.redirect("/dashboard"); // User already exist
+        if (data) res.redirect("/login"); // User already exist
         else {
           try {
             const _password = await bcrypt.hash(password, 10);
@@ -66,7 +67,6 @@ module.exports.register = (req, res) => {
             res.send(
               "An email has been sent to you, click the link to join us"
             );
-          
             transporter
               .verify(email, token)
               .then((data) => {
